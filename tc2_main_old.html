@@ -1,0 +1,2303 @@
+<!DOCTYPE html5>
+<html>
+  <head>
+    <script type="text/javascript" src="tc2_custom.js"></script>
+    <script type="text/javascript" src="tc2_teeth_image_urls.js"></script>
+    <script type="text/javascript" src="tc2_implant_image_url.js"></script>
+    <script type="text/javascript" src="tc2_constant.js"></script>
+    <script type="text/javascript" src="tc2_table_1.js"></script>
+    <script type="text/javascript" src="tc2_table_2.js"></script>
+    <script type="text/javascript" src="tc2_table_3.js"></script>
+    <script type="text/javascript" src="tc2_table_4.js"></script>
+    <script type="text/javascript" src="tc2_table_5.js"></script>
+    <script type="text/javascript" src="tc2_table_6.js"></script>
+    <script type="text/javascript" src="tc2_lib.js"></script>
+    <script type="text/javascript" src="tc2_report_format.js"></script>
+    <script type="text/javascript" src="tc2_main.js"></script>
+	<link rel="stylesheet" type="text/css" href="tc2_main.css">
+  </head>
+  <body>
+    <div id="tip_text"></div>
+    <div id="tooth_classes">
+      <label>
+        <input type="radio" name="tooth_class" value="normal"/><font>Normal</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="crown"/><font>Crown</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="crownimplant"/><font>Implant, Crown</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="endo"/><font>ENDO</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="crownendo"/><font>ENDO, Crown</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="missing"/><font>Missing</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="pontic"/><font>Pontic</font>
+      </label>
+      <!--label>
+        <input type="radio" name="tooth_class" value="implant"/><font>Implant</font>
+      </label><br-->
+    </div>
+    <form>
+      <div id="report_div">
+        <div>
+        <input type="button" id="close_report" value="Close"/>
+        <br>
+        <img id="report_img"/>
+        <canvas id="report_canvas" width="1654" height="2339"></canvas>
+        </div>
+      </div>
+      <input type="button" id="report_button" value="Create Report Picture"/>
+      <input type="button" id="load_record_button" value="Load Record"/>
+      <input type="button" id="save_record_button" value="Save Record"/>
+      <input type="checkbox" id="tab2next_table">"tab" clicking of the last input is to next table</input>
+      <br>
+      <div id="patient_data">
+        Candidate Name : <input type="text" id="p_name"/>
+        Case Report No. <input type="text" id="p_report_no"/>
+        <br>
+        Patient's Number : <input type="text" id="p_number"/>
+        Age <input type="text" id="p_age"/>
+        Sex <input type="text" id="p_sex"/>
+        Race <input type="text" id="p_race"/>
+        <br>
+        Stage of Therapy :
+        <fieldset id="p_stage_container">
+          <input type="radio" name="p_stage" value="0">Pre-treatment
+          <input type="radio" name="p_stage" value="1">Re-evaluation
+          <input type="radio" name="p_stage" value="2">Post-Treatment
+        </fieldset>
+        Date of exam : <input type="text" id="p_date"/>
+      </div>
+      <div id="stat_table">
+        <center><font name="stat_label">Statistic Data</font></center>
+        Number of BOPs: <input type="text" name="s_bop"><br>
+        Number of Plaques: <input type="text" name="s_plaque"><br>
+        Number of Teeth with BOP: <input type="text" name="s_bop_teeth"><br>
+        Number of Teeth with Plaque: <input type="text" name="s_plaque_teeth"><br>
+        Number of Total Teeth: <input type="text" name="s_total_teeth"><br>
+        Number of Total Sites: <input type="text" name="s_total_site"><br>
+      </div>
+      <div>
+      <table id="table_1">
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_top_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <font class="chart_label">Buccal</font>
+            <font class="chart_desc">
+              <br>
+              &nbsp;Mobility Scale<br>
+              &nbsp;Used:<br>
+              &nbsp;<u>Miller 1953</u><br>
+              <br>
+              &nbsp;Furcation Grade<br>
+              &nbsp;System Used:<br>
+              &nbsp;<u>Lindhe J,</u><br>
+              &nbsp;<u>Nyman S, 1985</u><br><br><br><br>
+            </font>
+            <font class="chart_label">Palatal</font>
+            <br><br>
+          </td>
+          <td colspan="5"><canvas class="chart_type" name="table_chart" width="287" height="415"/></td>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table id="table_2">
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_top_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_6">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_6">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_6">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_6">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_6">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <font class="chart_label">Labial</font>
+            <font class="chart_desc">
+              <br>
+              &nbsp;Mobility Scale<br>
+              &nbsp;Used:<br>
+              &nbsp;<u>Miller 1953</u><br>
+              <br>
+              &nbsp;Furcation Grade<br>
+              &nbsp;System Used:<br>
+              &nbsp;<u>Lindhe J,</u><br>
+              &nbsp;<u>Nyman S, 1985</u><br><br><br><br>
+            </font>
+            <font class="chart_label">Palatal</font>
+            <br><br>
+          </td>
+          <td colspan="6"><canvas class="chart_type" name="table_chart" width="320" height="415"/></td>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_6">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_6">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_6">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_6">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_6">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table id="table_3">
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_top_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <font class="chart_label">Buccal</font>
+            <font class="chart_desc">
+              <br>
+              &nbsp;Mobility Scale<br>
+              &nbsp;Used:<br>
+              &nbsp;<u>Miller 1953</u><br>
+              <br>
+              &nbsp;Furcation Grade<br>
+              &nbsp;System Used:<br>
+              &nbsp;<u>Lindhe J,</u><br>
+              &nbsp;<u>Nyman S, 1985</u><br><br><br><br>
+            </font>
+            <font class="chart_label">Palatal</font>
+            <br><br>
+          </td>
+          <td colspan="5"><canvas class="chart_type" name="table_chart" width="286" height="415"/></td>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table id="table_4">
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_top_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <font class="chart_label">Buccal</font>
+            <font class="chart_desc">
+              <br>
+              &nbsp;Mobility Scale<br>
+              &nbsp;Used:<br>
+              &nbsp;<u>Miller 1953</u><br>
+              <br>
+              &nbsp;Furcation Grade<br>
+              &nbsp;System Used:<br>
+              &nbsp;<u>Lindhe J,</u><br>
+              &nbsp;<u>Nyman S, 1985</u><br><br><br><br>
+            </font>
+            <font class="chart_label">Lingual</font>
+            <br><br>
+          </td>
+          <td colspan="5"><canvas class="chart_type" name="table_chart" width="288" height="416"/></td>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table id="table_5">
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_top_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_6">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_6">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_6">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_6">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_6">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <font class="chart_label">Labial</font>
+            <font class="chart_desc">
+              <br>
+              &nbsp;Mobility Scale<br>
+              &nbsp;Used:<br>
+              &nbsp;<u>Miller 1953</u><br>
+              <br>
+              &nbsp;Furcation Grade<br>
+              &nbsp;System Used:<br>
+              &nbsp;<u>Lindhe J,</u><br>
+              &nbsp;<u>Nyman S, 1985</u><br><br><br><br>
+            </font>
+            <font class="chart_label">Lingual</font>
+            <br><br>
+          </td>
+          <td colspan="6"><canvas class="chart_type" name="table_chart" width="312" height="416"/></td>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_6">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_6">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_6">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_6">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_6">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table id="table_6">
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_top_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_top_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_top_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_top_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_top_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_top_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            <font class="chart_label">Buccal</font>
+            <font class="chart_desc">
+              <br>
+              &nbsp;Mobility Scale<br>
+              &nbsp;Used:<br>
+              &nbsp;<u>Miller 1953</u><br>
+              <br>
+              &nbsp;Furcation Grade<br>
+              &nbsp;System Used:<br>
+              &nbsp;<u>Lindhe J,</u><br>
+              &nbsp;<u>Nyman S, 1985</u><br><br><br><br>
+            </font>
+            <font class="chart_label">Lingual</font>
+            <br><br>
+          </td>
+          <td colspan="5"><canvas class="chart_type" name="table_chart" width="287" height="416"/></td>
+        <tr>
+          <td class="label"><font class="data_label">CEJ-GM</font></td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_1">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_2">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_3">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_4">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="number_container" name="cejgm_bottom_set_5">
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+              <input type="number" class="number_type" name="cejgm_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">PD &amp; Plaque</font></td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_1">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_1">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_2">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_2">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_3">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_3">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_4">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_4">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="plaque_bottom_set_5">
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+              <font class="dot_type" name=plaque_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="pd_bottom_set_5">
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+              <input type="number" class="number_type" name="pd_value"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="label"><font class="data_label">CAL &amp; BOP</font></td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_1">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_1">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_2">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_2">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_3">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_3">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_4">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_4">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+          <td>
+            <div class="dot_container" name="bop_bottom_set_5">
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+              <font class="dot_type" name=bop_dot>&nbsp;</font>
+            </div>
+            <div class="number_container" name="cal_bottom_set_5">
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+              <input type="number" class="number_type" name="cal_result" readonly/>
+            </div>
+          </td>
+        </tr>
+      </table>
+      </div>
+    </form>
+  </body>
+</html>

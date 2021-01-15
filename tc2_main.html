@@ -1,0 +1,148 @@
+<!DOCTYPE html5>
+<html>
+  <head>
+    <script type="text/javascript" src="tc2_custom.js"></script>
+    <script type="text/javascript" src="tc2_teeth_image_urls.js"></script>
+    <script type="text/javascript" src="tc2_implant_image_url.js"></script>
+    <script type="text/javascript" src="tc2_constant.js"></script>
+    <script type="text/javascript" src="tc2_table_1.js"></script>
+    <script type="text/javascript" src="tc2_table_2.js"></script>
+    <script type="text/javascript" src="tc2_table_3.js"></script>
+    <script type="text/javascript" src="tc2_table_4.js"></script>
+    <script type="text/javascript" src="tc2_table_5.js"></script>
+    <script type="text/javascript" src="tc2_table_6.js"></script>
+    <script type="text/javascript" src="tc2_lib.js"></script>
+	<link rel="stylesheet" type="text/css" href="tc2_main.css">
+  </head>
+  <body>
+    <div id="tip_text"></div>
+    <div id="tooth_classes">
+      <label>
+        <input type="radio" name="tooth_class" value="normal"/><font>Normal</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="crown"/><font>Crown</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="crownimplant"/><font>Implant, Crown</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="endo"/><font>ENDO</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="crownendo"/><font>ENDO, Crown</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="missing"/><font>Missing</font>
+      </label><br>
+      <label>
+        <input type="radio" name="tooth_class" value="pontic"/><font>Pontic</font>
+      </label>
+      <!--label>
+        <input type="radio" name="tooth_class" value="implant"/><font>Implant</font>
+      </label><br-->
+    </div>
+    <form id="main_form">
+      <div id="report_div">
+        <div>
+        <input type="button" id="close_report" value="Close"/>
+        <br>
+        <img id="report_img"/>
+        <canvas id="report_canvas" width="1654" height="2339"></canvas>
+        </div>
+      </div>
+      <input type="button" id="report_button" value="Create Report Picture"/>
+      <input type="button" id="load_record_button" value="Load Record"/>
+      <input type="button" id="save_record_button" value="Save Record"/>
+      <input type="checkbox" id="tab2next_table">"tab" clicking of the last input is to next table</input>
+      <br>
+      <div id="patient_data">
+        Candidate Name : <input type="text" id="p_name"/>
+        Case Report No. <input type="text" id="p_report_no"/>
+        <br>
+        Patient's Number : <input type="text" id="p_number"/>
+        Age <input type="text" id="p_age"/>
+        Sex <input type="text" id="p_sex"/>
+        Race <input type="text" id="p_race"/>
+        <br>
+        Stage of Therapy :
+        <fieldset id="p_stage_container">
+          <input type="radio" name="p_stage" value="0">Pre-treatment
+            <input type="radio" name="p_stage" value="1">Re-evaluation
+            <input type="radio" name="p_stage" value="2">Post-Treatment
+        </fieldset>
+        Date of exam : <input type="text" id="p_date"/>
+      </div>
+      <div class="clearfix"></div>
+      <div id="stat_table_parent">
+        <div id="stat_table">
+          <center><font name="stat_label">Statistic Data</font></center>
+          Number of BOPs: <input type="text" name="s_bop"><br>
+          Number of Plaques: <input type="text" name="s_plaque"><br>
+          Number of Teeth with BOP: <input type="text" name="s_bop_teeth"><br>
+          Number of Teeth with Plaque: <input type="text" name="s_plaque_teeth"><br>
+          Number of Total Teeth: <input type="text" name="s_total_teeth"><br>
+          Number of Total Sites: <input type="text" name="s_total_site"><br>
+        </div>
+        <div id="stat_level_table">
+          <h5 class="slt-label">PD:</h5>
+          <div>
+            <div class="slt-level-label">4-6mm</div>
+            <table class="slt-table" id="pd_level_1">
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+            <br>
+            <div class="slt-level-label">&#8807;7mm</div>
+            <table class="slt-table" id="pd_level_2">
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <h5 class="slt-label">CEJ-GM:</h5>
+          <div>
+            <div class="slt-level-label">1-2mm</div>
+            <table class="slt-table" id="cejgm_level_1">
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+            <br>
+            <div class="slt-level-label">&#8807;3mm</div>
+            <table class="slt-table" id="cejgm_level_2">
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </form>
+    <script type="text/javascript" src="tc2_create_html_table.js"></script>
+    <script type="text/javascript" src="tc2_report_format.js"></script>
+    <script type="text/javascript" src="tc2_main.js"></script>
+  </body>
+</html>

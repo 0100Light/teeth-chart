@@ -1,0 +1,322 @@
+html {
+	background-color:gray;
+}
+
+#report_div{
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100%
+}
+
+#report_div > div {
+	position: relative;
+	top: 20;
+	left: 300;
+}
+
+#report_img {
+	max-width: 400;
+	max-height: auto;
+}
+
+#report_button {
+	font-size: 20px;
+	margin-left: 30px;
+	margin-top: 30px;
+	height: 50px;
+}
+
+#load_record_button {
+	margin-left: 40px;
+	font-size: 20px;
+	height: 50px;
+}
+
+#save_record_button {
+	font-size: 20px;
+	height: 50px;
+}
+
+#tab2next_table {
+	margin-left: 40px;
+}
+
+#report_canvas {
+	display: none;
+}
+
+#patient_data {
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 30px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: 2px solid black;
+  line-height: 35px;
+	display: inline-block;
+	overflow: hidden;
+	background-color: white;
+}
+
+#patient_data input[type="text"] {
+	text-align: center;
+	margin-right: 20px;
+	border: 0px solid #000000;
+	border-bottom-width: 1px;
+	background-color: transparent;
+}
+
+#patient_data input[type="radio"] {
+	margin-left: 10px;
+}
+
+#p_stage_container {
+	margin-right: 24px;
+	margin-left: 20px;
+	display: inline;
+	border: 0;
+	font-size: 14px;
+	width: 380px;
+	padding: 0;
+}
+
+#p_name {
+	width: 320px;
+}
+
+#p_report_no {
+	width: 205px;
+}
+
+#p_number {
+	width: 280px;
+}
+
+#p_age {
+	width: 30px;
+}
+
+#p_sex {
+	width: 60px;
+}
+
+#p_race {
+	width: 120px;
+}
+
+#p_date {
+	width: 130px;
+}
+
+#stat_table_parent {
+        margin-top: 10px;
+        margin-left: 30px; 
+}
+
+#stat_table {
+        height: 350px;
+        margin-top: 5px;
+	padding-left: 10px;
+	border: 2px solid saddlebrown;
+        line-height: 35px;
+	display: inline-block;
+	overflow: hidden;
+	background-color: white;
+        vertical-align: top;
+}
+
+#stat_table font[name="stat_label"] {
+	font-size: 32px;
+}
+
+#stat_table input[type="text"] {
+	font: 18px serif;
+	color: brown;
+	text-align: left;
+	border: 0px solid #000000;
+	background-color: transparent;
+        width: 160px;
+}
+
+.tooth-table th, .tooth-table td {
+	border:1px solid #aaa;
+	background-color: #FFFFFF;
+	height: 35px;
+	width: 55px;
+}
+
+.tooth-table td.label {
+	border-top:0;
+	border-bottom:0;
+	border-left:0;
+	background-color:#000000;
+	width: 150px;
+	text-align: center;
+}
+
+table.tooth-table {
+	border-collapse:collapse;
+	width:wrap;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#000000;
+	float: left;
+	margin: 20px;
+	}
+
+#stat_level_table {
+        height: 350px;
+        margin-top: 5px;
+	padding-left: 10px;
+	padding-right: 15px;
+	border: 2px solid saddlebrown;
+	display: inline-block;
+	overflow: hidden;
+	background-color: white;
+        vertical-align: top;
+}
+
+.slt-label {
+  margin: 10px 0 3px 0;
+  padding: 0;
+  height: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.slt-level-label {
+        width: 70px;
+        vertical-align: middle;
+        display: inline-block;
+}
+
+.slt-table {
+        vertical-align: middle;
+        display: inline-block;
+        grid: 1px solid black;
+        border-collapse: collapse;
+        margin-top: 0;
+        margin-bottom: 3px;
+}
+
+.slt-table td {
+  border: 1px solid black;
+  height: 30px;
+  font-size: 12px;
+  font-family: monospace;
+  width: 170px;
+  text-align: center;
+}
+
+.slt-table tr:first-child td {
+  border-top: 0;
+}
+
+.slt-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.slt-table tr td:first-child {
+  border-left: 0;
+}
+
+.slt-table tr td:last-child {
+  border-right: 0;
+}
+
+#tip_text {
+		border: brown thin solid;
+		border-radius: 5px;
+		font-size: 12;
+		position: absolute;
+	  background: rgba(255,255,255,0.9);
+		visibility: hidden;
+}
+
+#tooth_classes {
+		border: black thin solid;
+		border-radius: 2px;
+		font-size: 18;
+		position: absolute;
+	  background: rgba(255,255,255,0.9);
+		visibility: hidden;
+}
+
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + font{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + font{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
+}
+
+font.data_label {
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+font.chart_label {
+        padding-top: 20px;
+	color: #CFB53B;
+	font-size: 32px;
+        display: block;
+}
+
+font.chart_desc {
+	color: #FFFFFF;
+	font-size: 16px;
+	text-align: left;
+	float: left;
+}
+
+.clearfix {
+  clear: both;
+  overflow: auto;
+}
+
+.dot_type {
+        margin: auto 6px auto -1px;
+	font-family: 'Courier New', monospace;
+	color: #FFFFFF;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.dot_container {
+	line-height: 45%;
+	margin-left: 8px;
+}
+
+.number_container {
+	font-size: 0;
+	margin: 0;
+	margin-left: 5;
+}
+
+.number_type {
+	width:15px;
+	font-size: 12px;
+	text-align:center;
+	border-style: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+/* Comment lines below if number spin is required for input number type */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+	margin: 0;
+}
+/* Comment lines above if number spin is required */
