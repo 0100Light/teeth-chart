@@ -26,8 +26,8 @@ function create_teeth_tables() {
                                      "<br>" +
                                      "&nbsp;Furcation Grade<br>" +
                                      "&nbsp;System Used:<br>" +
-                                     "&nbsp;<u>Lindhe J,</u><br>" +
-                                     "&nbsp;<u>Nyman S, 1985</u>" +
+                                     "&nbsp;<u>Hamp, 1975</u><br>" +
+                                     "&nbsp;<u></u>" +
                                      "<br><br><br><br>",
                                   [TABLE_CHART_LABEL.PALATAL]: "Palatal",
                                   [TABLE_CHART_LABEL.LABIAL]: "Labial",
