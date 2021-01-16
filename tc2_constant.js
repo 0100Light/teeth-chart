@@ -68,7 +68,7 @@ const IMG_SET_CLASS_BLACK_INDICE = [IMG_TOOTH_CLASSES.MISSING,
                                     IMG_TOOTH_CLASSES.PONTIC];
 const IMG_SET_CLASS_TOOTH_NO_NOT_SHOW_INDICE = [IMG_TOOTH_CLASSES.MISSING];
 const FURCATION_GRADE_SYMBOLS = ["", "I", "II", "III"];
-const FURCATION_GRADE_TRIANGLE_BASE = [[-5, -7], [0, 7], [5, -7]];
+const FURCATION_GRADE_TRIANGLE_BASE = [[-5, 7], [0, -7], [5, 7]];
 const FURCATION_GRADE_BITRIANGLE_BASE = [[[-18, -5], [-4, 0], [-18, 5]],
                                          [[ 18, -5], [ 4, 0], [ 18, 5]]];
 const FURCATION_GRADE_TYPE = {SYMBOLS: FURCATION_GRADE_SYMBOLS,
