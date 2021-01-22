@@ -1,9 +1,11 @@
 
-const DEBUG_DRAW_GRID = false;
-const DEBUG_CLICK_AREA = false;
-const DEBUG_GET_POINT = false;
-const DEBUG_ONLY_ORIGINAL_BACKGROUND = false;
-const DEBUG_REPORT_CANVAS = false;
+const DEBUG_MODE = true;
+
+let DEBUG_DRAW_GRID = false;
+let DEBUG_CLICK_AREA = false;
+let DEBUG_GET_POINT = false;
+let DEBUG_ONLY_ORIGINAL_BACKGROUND = false;
+let DEBUG_REPORT_CANVAS = false;
 
 const ALL_TABLE_ID = [TABLE_1_ID, TABLE_2_ID, TABLE_3_ID,
                       TABLE_4_ID, TABLE_5_ID, TABLE_6_ID];
@@ -72,6 +74,16 @@ const DATA_TABLE_VALUE_KEY = "value";
 const DATA_CANVAS_KEY = "canvas";
 
 window.onload = function () {
+
+  // check if is debug mode.
+  if (DEBUG_MODE){
+    DEBUG_DRAW_GRID = true;
+    DEBUG_CLICK_AREA = true;
+    DEBUG_GET_POINT = true;
+    DEBUG_ONLY_ORIGINAL_BACKGROUND = false;
+    DEBUG_REPORT_CANVAS = true;
+  }
+
   var teeth_image_urls = TEETH_IMAGE_URLS;
   var all_img_clip = ALL_IMG_CLIP;
 

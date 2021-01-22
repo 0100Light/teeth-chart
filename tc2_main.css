@@ -292,6 +292,9 @@ font.chart_desc {
 .dot_container {
 	line-height: 45%;
 	margin-left: 8px;
+    /* TODO: visibility seems to be turn off accidentally while switching tooth class to "implant-crown",
+         this is only a hotfix. */
+	visibility: visible !important;
 }
 
 .number_container {
