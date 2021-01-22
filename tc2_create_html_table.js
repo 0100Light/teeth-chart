@@ -22,7 +22,7 @@ function create_teeth_tables() {
                                      "<br>" +
                                      "&nbsp;Mobility Scale<br>" +
                                      "&nbsp;Used:<br>" +
-                                     "&nbsp;<u>Miller 1953</u><br>" +
+                                     "&nbsp;<u>Miller, 1953</u><br>" +
                                      "<br>" +
                                      "&nbsp;Furcation Grade<br>" +
                                      "&nbsp;System Used:<br>" +

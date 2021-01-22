@@ -28,10 +28,8 @@ const REPORT_CHART_COMMENT = {"pos": {"Mobility Scale": [51, 707],
                                       "Furcation Grade": [51, 1715],
                                       "System Used" : [51, 1764]},
                               "font": "28px serif"};
-const REPORT_CHART_REFERENCE = {"pos": {"Miller 1953": [51, 807],
-                                        "Lindhe. J,": [51, 1815],
-                                        "Nyman S,": [51, 1866],
-                                        "1975" : [51, 1917]},
+const REPORT_CHART_REFERENCE = {"pos": {"Miller, 1953": [51, 807],
+                                        "Hamp, 1975": [51, 1815],},
                                 "font": '28px "Courier New", Courier, monospace',
                                 "is_underline" : true};
 const REPORT_SINGLE_LABEL_DATAS = [REPORT_TITLE_LABEL,

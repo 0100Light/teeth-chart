@@ -1,5 +1,4 @@
-
-const DEBUG_MODE = true;
+const DEBUG_MODE = false;
 
 let DEBUG_DRAW_GRID = false;
 let DEBUG_CLICK_AREA = false;
